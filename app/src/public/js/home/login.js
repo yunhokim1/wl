@@ -2,7 +2,7 @@
 
 const id = document.querySelector("#id"),
     psword = document.querySelector("#psword"),
-    loginBtn = document.querySelector("#button");
+    loginBtn = document.querySelector("button");
 
 
 loginBtn.addEventListener("click", login);
@@ -25,6 +25,7 @@ function login(){
             if(res.success){
                 location.href = "/";
             } else {
+                if (res.err) return alert(res.err);
                 alert(res.msg);
             }
         })
