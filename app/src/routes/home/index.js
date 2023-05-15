@@ -16,13 +16,7 @@ router.get("/profile", ctrl.output.profile);
 router.get("/change_psword", ctrl.output.change_psword);
 router.get("/delete_account", ctrl.output.delete_account);
 router.get("/settings", ctrl.output.settings);
-router.get('/',function(req,res){
-    if(req.session.isLogined){
-      res.render('hidden')
-    }else{
-      res.render('index')
-    }
-  })
+
 
 router.post("/login", ctrl.process.login);
 router.post("/register", ctrl.process.register);

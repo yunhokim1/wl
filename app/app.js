@@ -26,16 +26,6 @@ app.use(express.urlencoded({extended:true}));
 
 app.use("/", home); // use -> 미들 웨어를 등록해주는 메서드.
 
-var session=require('express-session')
-var MySQLStore = require('express-mysql-session')(session)
-var db = require('./src/config/db')
-var sessionStore = new MySQLStore(db)
-app.use(session({
-  secret: 'my key',
-  resave: false,
-  saveUninitialized: true,
-  store: sessionStore
-}))
 
 
 module.exports = app;
