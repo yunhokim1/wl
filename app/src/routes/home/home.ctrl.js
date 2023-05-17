@@ -24,9 +24,17 @@ const output = {
         logger.info(`GET /find_id 304 "아이디 찾기 화면으로 이동`);
         res.render("home/find_id");
     },
+    find_id_result: (req,res) => {
+        logger.info(`GET /find_id 304 "아이디 찾기 화면으로 이동`);
+        res.render("home/find_id_result");
+    },
     find_psword: (req,res) => {
         logger.info(`GET /find_psword 304 "비밀번호 찾기 화면으로 이동`);
         res.render("home/find_psword");
+    },
+    find_psword_result: (req,res) => {
+        logger.info(`GET /find_psword 304 "비밀번호 찾기 화면으로 이동`);
+        res.render("home/find_psword_result");
     },
     profile: (req,res) => {
         logger.info(`GET /profile 304 "프로필 화면으로 이동`);
