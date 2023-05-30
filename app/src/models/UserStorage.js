@@ -13,6 +13,15 @@ class UserStorage {
         });
     }
 
+    static find_id(userInfo) {
+        return new Promise((resolve, reject) => {
+            const query = "SELECT * FROM users WHERE name = ? and email = ? and birthDay = ?;";
+            db.query(query, [userInfo.name, userInfo.email, userInfo.birthDay], (err, data) => {
+                if (err) reject(`${err}`);
+                else resolve(data[0]);
+            });
+        });
+    }
 
     static async save(userInfo){
         return new Promise((resolve, reject) => {

@@ -24,6 +24,23 @@ class User {
         }
     }
 
+    async find_id() {
+        const client = this.body;
+        try{
+            const user = await UserStorage.find_id(client);
+            
+            if (user) {
+                if (user.name === client.name && user.email === client.email && user.birthDay === client.birthDay) {
+                    return { success: true, msg: client.name +"님의 아이디는 " + user.id + " 입니다." };
+                }
+                return { success: false, msg: "입력하신 정보가 틀렸습니다."};
+            }
+            return { success: false, msg: "입력하신 정보가 틀렸습니다."};
+        } catch (err) {
+            return { success: false, err};
+        }
+    }
+
     async register(){
         const client = this.body;
         try {

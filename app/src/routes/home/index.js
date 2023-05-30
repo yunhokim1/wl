@@ -6,7 +6,7 @@ const router = express.Router();
 
 const ctrl = require("./home.ctrl");
 
-router.get("/", ctrl.output.hello);
+router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/movie_info", ctrl.output.movie_info);
@@ -22,6 +22,8 @@ router.get("/settings", ctrl.output.settings);
 
 router.post("/login", ctrl.process.login);
 router.post("/register", ctrl.process.register);
+router.post("/find_id", ctrl.process.find_id);
+router.post("/find_psword", ctrl.process.find_psword);
 
 
 module.exports = router;                                                
