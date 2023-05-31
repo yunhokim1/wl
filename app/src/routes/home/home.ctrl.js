@@ -32,9 +32,9 @@ const output = {
         logger.info(`GET /find_psword 304 "비밀번호 찾기 화면으로 이동`);
         res.render("home/find_psword");
     },
-    find_psword_result: (req,res) => {
+    newPsword: (req,res) => {
         logger.info(`GET /find_psword 304 "비밀번호 찾기 화면으로 이동`);
-        res.render("home/find_psword_result");
+        res.render("home/newPsword");
     },
     profile: (req,res) => {
         logger.info(`GET /profile 304 "프로필 화면으로 이동`);
@@ -90,7 +90,7 @@ const process = {
 
         const url = {
             method: "POST",
-            path: "/login",
+            path: "/find_id",
             status: response.err ? 400 : 200,
         };
 
@@ -104,7 +104,21 @@ const process = {
 
         const url = {
             method: "POST",
-            path: "/login",
+            path: "/find_psword",
+            status: response.err ? 400 : 200,
+        };
+
+        log(response, url);
+        return res.status(url.status).json(response);
+    },
+
+    newPsword:  async (req, res) => {
+        const user = new User(req.body);
+        const response = await user.newPsword();
+
+        const url = {
+            method: "POST",
+            path: "/newPsword",
             status: response.err ? 400 : 200,
         };
 

@@ -41,6 +41,33 @@ class User {
         }
     }
 
+    async find_psword() {
+        const client = this.body;
+        try{
+            const user = await UserStorage.find_psword(client);
+            
+            if (user) {
+                if (user.id === client.id && user.name === client.name && user.email === client.email && user.birthDay === client.birthDay) {
+                    return { success: true };
+                }
+                return { success: false, msg: "입력하신 정보가 틀렸습니다."};
+            }
+            return { success: false, msg: "입력하신 정보가 틀렸습니다."};
+        } catch (err) {
+            return { success: false, err};
+        }
+    }
+    
+    async newPsword(){
+        const client = this.body;
+        try {
+            const response = await UserStorage.newPsword(client);
+            return response;
+        } catch (err) {
+            return { success: false, err };
+        }
+    }
+
     async register(){
         const client = this.body;
         try {
